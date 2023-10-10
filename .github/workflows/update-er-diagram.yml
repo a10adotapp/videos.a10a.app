@@ -41,11 +41,7 @@ jobs:
         with:
           node-version: "20"
 
-      - run: echo "DATABASE_URL=\"mysql://root@db:3306/videos_a10a_app\"\n" > .env.development.local
-
-      - run: cat .env.development.local
-
-      - run: npx prisma migrate dev
+      - run: DATABASE_URL="mysql://root@db:3306/videos_a10a_app" npx prisma migrate dev
 
       - name: run schemaspy
         run: |
