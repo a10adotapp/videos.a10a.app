@@ -25,7 +25,7 @@ jobs:
         image: mysql:8
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_DATABASE: schemaspy_db
+          MYSQL_DATABASE: videos_a10a_app
         ports:
           - 3306:3306
         options: >-
@@ -35,17 +35,17 @@ jobs:
           --health-retries 100
 
     steps:
-      - uses: actions/setup-go@v4
-        with:
-          go-version: "1.21"
-
       - uses: actions/checkout@v4
 
-      - name: run migrate
-        run: |
-          go run -mod=mod ariga.io/atlas/cmd/atlas migrate apply \
-            --dir file://${PWD}/ent/migrate/migrations \
-            --url mysql://root@127.0.0.1:3306/genbago
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - run: echo "DATABASE_URL=\"mysql://root@db:3306/videos_a10a_app\"\n" > .env.development.local
+
+      - run: cat .env.development.local
+
+      - run: npx prisma migrate dev
 
       - name: run schemaspy
         run: |
@@ -58,7 +58,7 @@ jobs:
               -host db \
               -port 3306 \
               -u root \
-              -db schemaspy_db \
+              -db videos_a10a_app \
               -s videos_a10a_app \
               -vizjs
           sudo chown -R runner:docker ${PWD}/er
