@@ -1,0 +1,8 @@
+User
+Keyword
+Video
+Account
+Session
+_KeywordToVideo
+_prisma_migrations
+VerificationToken
