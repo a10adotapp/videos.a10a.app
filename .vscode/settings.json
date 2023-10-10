@@ -1,0 +1,22 @@
+{
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#333333",
+    "titleBar.inactiveBackground": "#333333"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.trailingComma": "all",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "prisma.prisma"
+  }
+}
