@@ -65,6 +65,7 @@ jobs:
             er/**
           author: GitHub Action [bot] <noreply@github.com>
           committer: GitHub Action [bot] <noreply@github.com>
+          base: docs
           branch: github-actions/update-er
           branch-suffix: short-commit-hash
           commit-message: auto generate er diagram
