@@ -17,7 +17,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  schema:
+  main:
     runs-on: ubuntu-latest
 
     services:
