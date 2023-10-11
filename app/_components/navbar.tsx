@@ -1,17 +1,11 @@
-"use client";
+import { authOptions } from "@/auth/auth-options";
+import { getServerSession } from "next-auth";
+import { SignInButton } from "./sign-in-button";
 
-import { signIn } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import { useCallback } from "react";
+export async function Navbar() {
+  const session = await getServerSession(authOptions);
 
-export function Navbar() {
-  const pathname = usePathname();
-
-  const signInButtonClick = useCallback(() => {
-    signIn("google", {
-      callbackUrl: pathname,
-    });
-  }, [pathname]);
+  console.log({ session });
 
   return (
     <nav className="navbar fixed-bottom navbar-light bg-light">
@@ -30,12 +24,7 @@ export function Navbar() {
           </li>
 
           <li className="nav-item">
-            <button
-              className="btn btn-outline-secondary"
-              onClick={signInButtonClick}
-            >
-              SignIn
-            </button>
+            <SignInButton session={session} />
           </li>
         </ul>
       </div>
