@@ -38,7 +38,8 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 700 ~/.ssh/id_ed25519
 
-      - run: ssh deploy
+      - name: ssh deploy
+        run: |
           ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} /bin/sh -c '\
           cd ~/videos.a10a.app \
           && pwd \
