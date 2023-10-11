@@ -10,6 +10,8 @@ COPY . .
 
 RUN npm install && npm run build
 
+RUN npx prisma generate
+
 FROM base AS runner
 
 WORKDIR /app
