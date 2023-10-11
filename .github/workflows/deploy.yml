@@ -3,6 +3,21 @@ name: Deploy
 on:
   workflow_dispatch:
 
+permissions:
+  # actions: write
+  # checks: read|write|none
+  # contents: read|write|none
+  deployments: write
+  # id-token: read|write|none
+  # issues: read|write|none
+  # discussions: read|write|none
+  # packages: read|write|none
+  # pages: read|write|none
+  # pull-requests: read|write|none
+  # repository-projects: read|write|none
+  # security-events: read|write|none
+  # statuses: read|write|none
+
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -17,13 +32,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: |
+      - name: docker build
+        run: |
           docker build \
               --tag ghcr.io/${{ github.repository }}:${{ github.sha }} \
               --tag ghcr.io/${{ github.repository }}:latest \
               .
 
-      - run: |
+      - name: docker push
+        run: |
           docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
           docker push ghcr.io/${{ github.repository }}:latest
 
