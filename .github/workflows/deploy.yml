@@ -35,6 +35,6 @@ jobs:
       - run: |
           mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          echo "${{ secrets.SSH_PUBKEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 700 ~/.ssh/id_ed25519
           ssh -l ${{ secrets.SSH_USER}} -i ~/.ssh/id_ed25519 ${{ secrets.SSH_HOST }} id
