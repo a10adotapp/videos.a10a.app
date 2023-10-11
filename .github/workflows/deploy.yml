@@ -37,4 +37,4 @@ jobs:
           ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
           echo "${{ secrets.SSH_PUBKEY }}" > ~/.ssh/id_ed25519
           chmod 700 ~/.ssh/id_ed25519
-          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} id
+          ssh -l ${{ secrets.SSH_USER}} -i ~/.ssh/id_ed25519 ${{ secrets.SSH_HOST }} id
