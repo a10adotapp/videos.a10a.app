@@ -40,7 +40,7 @@ jobs:
 
       - name: ssh deploy
         run: |
-          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} /bin/sh -c '\
+          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} '\
           cd ~/videos.a10a.app \
           && pwd \
           && docker compose up -d --build \
