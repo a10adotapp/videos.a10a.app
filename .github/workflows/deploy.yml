@@ -38,8 +38,9 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 700 ~/.ssh/id_ed25519
 
-      - run: |
+      - run: ssh deploy
           ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} /bin/sh -c '\
-            cd ~/videos.a10a.app \
-            && docker compose up -d --build \
+          cd ~/videos.a10a.app \
+          && pwd \
+          && docker compose up -d --build \
           '
