@@ -7,34 +7,35 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v4
-      #   with:
-      #     persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-      # - uses: docker/login-action@v3
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-
-      # - run: |
-      #     docker build \
-      #         --tag ghcr.io/${{ github.repository }}:${{ github.sha }} \
-      #         --tag ghcr.io/${{ github.repository }}:latest \
-      #         .
-
-      # - run: |
-      #     docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
-      #     docker push ghcr.io/${{ github.repository }}:latest
-      - run: |
-          id
-          cd ~
-          pwd
-          ls -la
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
+          docker build \
+              --tag ghcr.io/${{ github.repository }}:${{ github.sha }} \
+              --tag ghcr.io/${{ github.repository }}:latest \
+              .
+
+      - run: |
+          docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository }}:latest
+
+      - name: setup ssh
+        run: |
           mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 700 ~/.ssh/id_ed25519
-          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} id
+
+      - run: |
+          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} /bin/sh -c '\
+            cd ~/videos.a10a.app \
+            && docker compose up -d --build \
+          '
