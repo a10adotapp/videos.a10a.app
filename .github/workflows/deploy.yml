@@ -42,6 +42,7 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} '\
           cd ~/videos.a10a.app \
-          && pwd \
-          && docker compose up -d --build \
+          && docker compose pull \
+          && docker compose build \
+          && docker compose restart \
           '
