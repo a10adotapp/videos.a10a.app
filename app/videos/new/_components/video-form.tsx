@@ -23,8 +23,6 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
 
   const [title, setTitle] = useState<string | undefined>(undefined);
 
-  const [description, setDescription] = useState<string | undefined>(undefined);
-
   const [keywords, setKeywords] = useState<string[] | undefined>(undefined);
 
   const [selectedKeywords, setSelectedKeywords] = useState<
@@ -47,9 +45,9 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
         formData.append("imageUrl", selectedImageUrl);
       }
 
-      const { validationError } = await createVideo(formData);
+      const { validationError, errorMessage } = await createVideo(formData);
 
-      if (!validationError) {
+      if (!validationError && !errorMessage) {
         router.push(callbackUrl ?? "/videos");
         router.refresh();
 
@@ -71,7 +69,6 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
 
     setValidationError(validationError);
     setTitle(title);
-    setDescription(description);
     setKeywords(keywords);
     setSelectedKeywords(keywords);
     setImageUrls(imageUrls);
@@ -147,24 +144,6 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
           <Form.Control.Feedback type="invalid" className="d-block">
             {validationError?.title?.map((message, index) => (
               <div key={`feedback-invalid-title-${index}`}>{message}</div>
-            )) ?? null}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-
-          <Form.Control
-            as="textarea"
-            rows={2}
-            name="description"
-            defaultValue={description}
-            isInvalid={!!validationError?.description}
-          />
-
-          <Form.Control.Feedback type="invalid" className="d-block">
-            {validationError?.description?.map((message, index) => (
-              <div key={`feedback-invalid-description-${index}`}>{message}</div>
             )) ?? null}
           </Form.Control.Feedback>
         </Form.Group>

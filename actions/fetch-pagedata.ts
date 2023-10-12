@@ -45,13 +45,7 @@ export async function fetchPagedata(formData: FormData): Promise<{
     `meta[name="description"]`,
   )?.textContent;
 
-  const imgs = dom.window.document.querySelectorAll("img");
-
   const url = new URL(result.data.url);
-
-  console.log(
-    dom.window.document.querySelector(".tagsWrapper > div")?.textContent,
-  );
 
   return {
     title: dom.window.document.title,
@@ -59,35 +53,86 @@ export async function fetchPagedata(formData: FormData): Promise<{
       dom.window.document
         .querySelector(`meta[name="description"]`)
         ?.getAttribute("content") ?? undefined,
-    keywords: ((): string[] | undefined => {
-      let keywords = [
-        ...(dom.window.document
-          .querySelector(`meta[name="keywords"]`)
-          ?.getAttribute("content")
-          ?.split(",")
-          .map((keyword) => keyword.trim())
-          .filter((keyword) => keyword !== "") ?? []),
-        ...(Array.from(dom.window.document.querySelectorAll(".tagsWrapper a"))
-          .map((elem) => elem.textContent?.trim() ?? "")
-          .filter((keyword) => keyword !== "") ?? []),
-      ];
+    keywords: await newKeywords(dom),
+    imageUrls: await newImageUrls(dom, url),
+  };
+}
 
-      if (keywords.length > 0) {
-        return keywords;
-      }
+async function newKeywords(dom: JSDOM): Promise<string[] | undefined> {
+  let keywords = [
+    ...(dom.window.document
+      .querySelector(`meta[name="keywords"]`)
+      ?.getAttribute("content")
+      ?.split(",")
+      .map((keyword) => keyword.trim())
+      .filter((keyword) => keyword !== "") ?? []),
+    ...(Array.from(dom.window.document.querySelectorAll(".tagsWrapper a"))
+      .map((elem) => elem.textContent?.trim() ?? "")
+      .filter((keyword) => keyword !== "") ?? []),
+  ];
 
-      return undefined;
-    })(),
-    imageUrls: Array.from(imgs).map((img) => {
+  if (keywords.length > 0) {
+    return [...new Set(keywords)].sort();
+  }
+
+  return undefined;
+}
+
+async function newImageUrls(dom: JSDOM, baseUrl: URL): Promise<string[]> {
+  const imgs = dom.window.document.querySelectorAll("img");
+
+  let imageUrls = [
+    dom.window.document
+      .querySelector(`meta[property="og:image"]`)
+      ?.getAttribute("content") ?? "",
+    dom.window.document
+      .querySelector(`meta[property="twitter:image"]`)
+      ?.getAttribute("content") ?? "",
+    ...Array.from(imgs).map((img) => {
       if (img.src.startsWith("//")) {
-        return url.protocol + img.src;
+        return baseUrl.protocol + img.src;
       }
 
       if (img.src.startsWith("/")) {
-        return url.origin + img.src;
+        return baseUrl.origin + img.src;
       }
 
       return img.src;
     }),
-  };
+  ];
+
+  imageUrls = imageUrls.filter((imageUrl) => imageUrl);
+
+  imageUrls = await Promise.all(
+    imageUrls.map(async (imageUrl) => {
+      try {
+        const response = await fetch(imageUrl);
+
+        const contentType = response.headers.get("Content-Type");
+
+        let isContentTypeAcceptable =
+          contentType === "image/jpeg" || contentType === "image/png";
+
+        if (!isContentTypeAcceptable) {
+          throw new Error(
+            `content type is not acceptable (Content-Type: ${contentType})`,
+          );
+        }
+
+        const responseData = await response.arrayBuffer();
+
+        const base64 = Buffer.from(responseData).toString("base64");
+
+        return `data:${contentType};base64,${base64}`;
+      } catch (err) {
+        console.error({ err });
+      }
+
+      return "";
+    }),
+  );
+
+  imageUrls = imageUrls.filter((imageUrl) => imageUrl);
+
+  return imageUrls;
 }

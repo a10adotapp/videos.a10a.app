@@ -4,6 +4,9 @@ const nextConfig = {
     serverActions: true,
   },
   output: "standalone",
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
+  },
 };
 
 module.exports = nextConfig

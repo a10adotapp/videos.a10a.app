@@ -5,6 +5,9 @@ services:
       dockerfile: Dockerfile
     image: videos-a10a-app
     container_name: videos-a10a-app
+    env_file:
+      - .env
+      - .env.local
     command: sleep infinity
     volumes:
       - ..:/workspace:cached

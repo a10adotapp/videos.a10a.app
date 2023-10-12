@@ -5,8 +5,6 @@ import { SignInButton } from "./sign-in-button";
 export async function Navbar() {
   const session = await getServerSession(authOptions);
 
-  console.log({ session });
-
   return (
     <nav className="navbar fixed-bottom navbar-light bg-light">
       <div className="container-fluid">
