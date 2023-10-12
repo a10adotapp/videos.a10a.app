@@ -45,4 +45,5 @@ jobs:
           && docker compose pull \
           && docker compose build \
           && docker compose restart \
+          && docker compose exec app sh -c "npx prisma migrate deploy"
           '
