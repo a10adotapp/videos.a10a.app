@@ -104,33 +104,33 @@
 <g id="node2" class="node">
 <title>Video</title>
 <g id="a_node2"><a xlink:href="../../tables/Video.html" xlink:title="Video" target="_top">
-<polygon fill="#ffffff" stroke="transparent" points="14.5,-341.2 14.5,-515.2 102.5,-515.2 102.5,-341.2 14.5,-341.2"/>
-<polygon fill="#f5f5f5" stroke="transparent" points="14.5,-492.2 14.5,-515.2 102.5,-515.2 102.5,-492.2 14.5,-492.2"/>
-<polygon fill="none" stroke="#000000" points="14.5,-492.2 14.5,-515.2 102.5,-515.2 102.5,-492.2 14.5,-492.2"/>
-<text text-anchor="start" x="19.5" y="-500.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="11.00" fill="#000000">Video</text>
-<text text-anchor="start" x="67.5437" y="-500.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">[table]</text>
-<polygon fill="none" stroke="#000000" points="14.5,-470.2 14.5,-492.2 102.5,-492.2 102.5,-470.2 14.5,-470.2"/>
-<image xlink:href="../../images/primaryKeys.png" width="11px" height="12px" preserveAspectRatio="xMinYMin meet" x="19.5" y="-487.2"/>
-<text text-anchor="start" x="34.5" y="-477.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">id</text>
-<polygon fill="none" stroke="#000000" points="14.5,-448.2 14.5,-470.2 102.5,-470.2 102.5,-448.2 14.5,-448.2"/>
-<text text-anchor="start" x="34.5" y="-455.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">title</text>
-<polygon fill="none" stroke="#000000" points="14.5,-426.2 14.5,-448.2 102.5,-448.2 102.5,-426.2 14.5,-426.2"/>
-<text text-anchor="start" x="34.5" y="-433.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">description</text>
-<polygon fill="none" stroke="#000000" points="14.5,-404.2 14.5,-426.2 102.5,-426.2 102.5,-404.2 14.5,-404.2"/>
-<text text-anchor="start" x="34.5" y="-411.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">imageUrl</text>
-<polygon fill="none" stroke="#000000" points="14.5,-382.2 14.5,-404.2 102.5,-404.2 102.5,-382.2 14.5,-382.2"/>
-<text text-anchor="start" x="34.5" y="-389.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">createdAt</text>
-<polygon fill="none" stroke="#000000" points="14.5,-360.2 14.5,-382.2 102.5,-382.2 102.5,-360.2 14.5,-360.2"/>
-<text text-anchor="start" x="34.5" y="-367.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">updatedAt</text>
-<polygon fill="#ffffff" stroke="transparent" points="14.5,-341.2 14.5,-360.2 34.5,-360.2 34.5,-341.2 14.5,-341.2"/>
-<polygon fill="none" stroke="#000000" points="14.5,-341.2 14.5,-360.2 34.5,-360.2 34.5,-341.2 14.5,-341.2"/>
-<text text-anchor="start" x="17.5" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000"> &#160;</text>
-<polygon fill="#ffffff" stroke="transparent" points="34.5,-341.2 34.5,-360.2 76.5,-360.2 76.5,-341.2 34.5,-341.2"/>
-<polygon fill="none" stroke="#000000" points="34.5,-341.2 34.5,-360.2 76.5,-360.2 76.5,-341.2 34.5,-341.2"/>
-<text text-anchor="start" x="41.1105" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">0 rows</text>
-<polygon fill="#ffffff" stroke="transparent" points="76.5,-341.2 76.5,-360.2 102.5,-360.2 102.5,-341.2 76.5,-341.2"/>
-<polygon fill="none" stroke="#000000" points="76.5,-341.2 76.5,-360.2 102.5,-360.2 102.5,-341.2 76.5,-341.2"/>
-<text text-anchor="start" x="83.9053" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">1 &gt;</text>
+<polygon fill="#ffffff" stroke="transparent" points="16.5,-341.2 16.5,-515.2 100.5,-515.2 100.5,-341.2 16.5,-341.2"/>
+<polygon fill="#f5f5f5" stroke="transparent" points="16.5,-492.2 16.5,-515.2 100.5,-515.2 100.5,-492.2 16.5,-492.2"/>
+<polygon fill="none" stroke="#000000" points="16.5,-492.2 16.5,-515.2 100.5,-515.2 100.5,-492.2 16.5,-492.2"/>
+<text text-anchor="start" x="21.5" y="-500.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="11.00" fill="#000000">Video</text>
+<text text-anchor="start" x="65.5437" y="-500.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">[table]</text>
+<polygon fill="none" stroke="#000000" points="16.5,-470.2 16.5,-492.2 100.5,-492.2 100.5,-470.2 16.5,-470.2"/>
+<image xlink:href="../../images/primaryKeys.png" width="11px" height="12px" preserveAspectRatio="xMinYMin meet" x="21.5" y="-487.2"/>
+<text text-anchor="start" x="36.5" y="-477.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">id</text>
+<polygon fill="none" stroke="#000000" points="16.5,-448.2 16.5,-470.2 100.5,-470.2 100.5,-448.2 16.5,-448.2"/>
+<text text-anchor="start" x="36.5" y="-455.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">title</text>
+<polygon fill="none" stroke="#000000" points="16.5,-426.2 16.5,-448.2 100.5,-448.2 100.5,-426.2 16.5,-426.2"/>
+<text text-anchor="start" x="36.5" y="-433.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">imageUrl</text>
+<polygon fill="none" stroke="#000000" points="16.5,-404.2 16.5,-426.2 100.5,-426.2 100.5,-404.2 16.5,-404.2"/>
+<text text-anchor="start" x="36.5" y="-411.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">createdAt</text>
+<polygon fill="none" stroke="#000000" points="16.5,-382.2 16.5,-404.2 100.5,-404.2 100.5,-382.2 16.5,-382.2"/>
+<text text-anchor="start" x="36.5" y="-389.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">updatedAt</text>
+<polygon fill="none" stroke="#000000" points="16.5,-360.2 16.5,-382.2 100.5,-382.2 100.5,-360.2 16.5,-360.2"/>
+<text text-anchor="start" x="36.5" y="-367.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">url</text>
+<polygon fill="#ffffff" stroke="transparent" points="16.5,-341.2 16.5,-360.2 34.5,-360.2 34.5,-341.2 16.5,-341.2"/>
+<polygon fill="none" stroke="#000000" points="16.5,-341.2 16.5,-360.2 34.5,-360.2 34.5,-341.2 16.5,-341.2"/>
+<text text-anchor="start" x="19.5" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000"> &#160;</text>
+<polygon fill="#ffffff" stroke="transparent" points="34.5,-341.2 34.5,-360.2 75.5,-360.2 75.5,-341.2 34.5,-341.2"/>
+<polygon fill="none" stroke="#000000" points="34.5,-341.2 34.5,-360.2 75.5,-360.2 75.5,-341.2 34.5,-341.2"/>
+<text text-anchor="start" x="40.1105" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">0 rows</text>
+<polygon fill="#ffffff" stroke="transparent" points="75.5,-341.2 75.5,-360.2 100.5,-360.2 100.5,-341.2 75.5,-341.2"/>
+<polygon fill="none" stroke="#000000" points="75.5,-341.2 75.5,-360.2 100.5,-360.2 100.5,-341.2 75.5,-341.2"/>
+<text text-anchor="start" x="81.9053" y="-347.3" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">1 &gt;</text>
 </a>
 </g>
 </g>
@@ -166,9 +166,9 @@
 <!-- _KeywordToVideo&#45;&gt;Video -->
 <g id="edge2" class="edge">
 <title>_KeywordToVideo:w&#45;&gt;Video:e</title>
-<path fill="none" stroke="#000000" d="M144.0294,-541.9352C124.9839,-527.4744 134.5515,-481.2 102.5,-481.2"/>
-<polygon fill="#000000" stroke="#000000" points="150.3486,-543.8642 156.9489,-549.6431 154.1743,-545.0321 158,-546.2 158,-546.2 158,-546.2 154.1743,-545.0321 159.0511,-542.7569 150.3486,-543.8642 150.3486,-543.8642"/>
-<ellipse fill="none" stroke="#000000" cx="147.288" cy="-542.9299" rx="3.2" ry="3.2"/>
+<path fill="none" stroke="#000000" d="M144.0136,-542.134C124.063,-527.9039 133.1942,-481.2 100.5,-481.2"/>
+<polygon fill="#000000" stroke="#000000" points="150.318,-543.9667 156.995,-549.6569 154.159,-545.0834 158,-546.2 158,-546.2 158,-546.2 154.159,-545.0834 159.005,-542.7431 150.318,-543.9667 150.318,-543.9667"/>
+<ellipse fill="none" stroke="#000000" cx="147.2452" cy="-543.0734" rx="3.2" ry="3.2"/>
 </g>
 <!-- Keyword -->
 <g id="node4" class="node">
