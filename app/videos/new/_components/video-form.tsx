@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { Button, Form, InputGroup, Stack } from "react-bootstrap";
+import toast from "react-hot-toast";
 
 export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
   const router = useRouter();
@@ -45,7 +46,14 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
         formData.append("imageUrl", selectedImageUrl);
       }
 
-      const { validationError, errorMessage } = await createVideo(formData);
+      const { validationError, errorMessage } = await toast.promise(
+        createVideo(formData),
+        {
+          loading: "saving...",
+          success: "saved!",
+          error: "failed.",
+        },
+      );
 
       if (!validationError && !errorMessage) {
         router.push(callbackUrl ?? "/videos");
@@ -55,6 +63,10 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
       }
 
       setValidationError(validationError);
+
+      if (errorMessage) {
+        toast.error(errorMessage);
+      }
     },
     [callbackUrl, router, selectedImageUrl, selectedKeywords],
   );
@@ -64,8 +76,12 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
 
     formData.append("url", urlFieldRef.current?.value ?? "");
 
-    const { validationError, title, description, keywords, imageUrls } =
-      await fetchPagedata(formData);
+    const { validationError, errorMessage, title, keywords, imageUrls } =
+      await toast.promise(fetchPagedata(formData), {
+        loading: "fetching...",
+        success: "fetched!",
+        error: "failed.",
+      });
 
     setValidationError(validationError);
     setTitle(title);
@@ -77,6 +93,10 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
         ? imageUrls[0]
         : undefined,
     );
+
+    if (errorMessage) {
+      toast.error(errorMessage);
+    }
   }, []);
 
   const keywordBadgeClick = useCallback(

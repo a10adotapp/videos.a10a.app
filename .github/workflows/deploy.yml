@@ -44,6 +44,6 @@ jobs:
           cd ~/videos.a10a.app \
           && docker compose pull \
           && docker compose build \
-          && docker compose restart \
+          && docker compose up -d \
           && docker compose exec app sh -c "npx prisma migrate deploy"
           '

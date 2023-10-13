@@ -17,8 +17,8 @@ export type ValidationError = {
 
 export async function fetchPagedata(formData: FormData): Promise<{
   validationError?: ValidationError;
+  errorMessage?: string;
   title?: string;
-  description?: string;
   keywords?: string[];
   imageUrls?: string[];
 }> {
@@ -38,21 +38,30 @@ export async function fetchPagedata(formData: FormData): Promise<{
 
   const responseData = await response.text();
 
-  const dom = new JSDOM(responseData);
+  if (!response.ok) {
+    const contentType = response.headers.get("Content-Type");
 
-  const title = dom.window.document.title;
-  const description = dom.window.document.querySelector(
-    `meta[name="description"]`,
-  )?.textContent;
+    if (contentType) {
+      if (new RegExp(/text\/html/, "i").test(contentType)) {
+        const dom = new JSDOM(responseData);
+
+        return {
+          errorMessage: `Status: ${response.status}\n${dom.window.document.title}`,
+        };
+      }
+    }
+
+    return {
+      errorMessage: `Status: ${response.status}\n${responseData}`,
+    };
+  }
+
+  const dom = new JSDOM(responseData);
 
   const url = new URL(result.data.url);
 
   return {
     title: dom.window.document.title,
-    description:
-      dom.window.document
-        .querySelector(`meta[name="description"]`)
-        ?.getAttribute("content") ?? undefined,
     keywords: await newKeywords(dom),
     imageUrls: await newImageUrls(dom, url),
   };
@@ -114,9 +123,11 @@ async function newImageUrls(dom: JSDOM, baseUrl: URL): Promise<string[]> {
           contentType === "image/jpeg" || contentType === "image/png";
 
         if (!isContentTypeAcceptable) {
-          throw new Error(
+          console.info(
             `content type is not acceptable (Content-Type: ${contentType})`,
           );
+
+          return "";
         }
 
         const responseData = await response.arrayBuffer();

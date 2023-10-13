@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Toaster } from "react-hot-toast";
 import { Navbar } from "./_components/navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -14,6 +15,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         />
 
         <Navbar />
+
+        <Toaster />
       </body>
     </html>
   );

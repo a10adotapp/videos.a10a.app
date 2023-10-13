@@ -1,7 +1,7 @@
 "use server";
 
 import { authOptions } from "@/auth/auth-options";
-import { newClient } from "@/prisma/client";
+import { sharedClient } from "@/prisma/client";
 import { createHash } from "crypto";
 import { writeFileSync } from "fs";
 import { getServerSession } from "next-auth";
@@ -78,7 +78,7 @@ export async function createVideo(formData: FormData): Promise<{
       }
     }
 
-    newClient({ shared: true }).$transaction(async (tx) => {
+    sharedClient.$transaction(async (tx) => {
       const video = await tx.video.create({
         data: {
           url: result.data.url,

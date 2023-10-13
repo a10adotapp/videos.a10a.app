@@ -1,10 +1,10 @@
-import { newClient } from "@/prisma/client";
+import { sharedClient } from "@/prisma/client";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { AuthOptions, DefaultSession } from "next-auth";
 import { newGoogleProvider } from "./google";
 
 export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(newClient({ shared: true })),
+  adapter: PrismaAdapter(sharedClient),
   providers: [newGoogleProvider()],
   callbacks: {
     session: async ({ session, user }) => {
