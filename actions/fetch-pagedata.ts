@@ -72,7 +72,7 @@ async function newKeywords(dom: JSDOM): Promise<string[] | undefined> {
     ...(dom.window.document
       .querySelector(`meta[name="keywords"]`)
       ?.getAttribute("content")
-      ?.split(",")
+      ?.split(/[,、]/)
       .map((keyword) => keyword.trim())
       .filter((keyword) => keyword !== "") ?? []),
     ...(Array.from(dom.window.document.querySelectorAll(".tagsWrapper a"))

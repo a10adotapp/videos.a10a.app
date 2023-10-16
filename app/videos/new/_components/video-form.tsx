@@ -56,6 +56,10 @@ export function VideoForm({ callbackUrl }: { callbackUrl?: string }) {
       );
 
       if (!validationError && !errorMessage) {
+        if (urlFieldRef.current) {
+          urlFieldRef.current.value = "";
+        }
+
         router.push(callbackUrl ?? "/videos");
         router.refresh();
 
