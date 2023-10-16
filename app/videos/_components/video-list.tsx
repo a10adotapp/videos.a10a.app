@@ -1,4 +1,5 @@
 import { Video } from "@/prisma/client/";
+import Link from "next/link";
 
 export function VideoList({ videos }: { videos: Video[] }) {
   return (
@@ -12,7 +13,9 @@ export function VideoList({ videos }: { videos: Video[] }) {
           />
 
           <div className="card-body">
-            <h5 className="card-title">{video.title}</h5>
+            <Link href={video.url ?? "#"} target="_blank">
+              <h5 className="card-title">{video.title}</h5>
+            </Link>
           </div>
         </div>
       ))}
